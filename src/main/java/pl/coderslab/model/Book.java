@@ -1,4 +1,4 @@
-package pl.model;
+package pl.coderslab.model;
 
 public class Book {
 
