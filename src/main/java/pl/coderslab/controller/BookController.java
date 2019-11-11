@@ -1,33 +1,75 @@
 package pl.coderslab.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.model.Book;
 import pl.coderslab.service.MemoryBookService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 
 @RestController
-@RequestMapping("/books")
 public class BookController {
 
     @Autowired
     MemoryBookService bookService;
 
-//    @RequestMapping("/hello")
-//    public String hello(){
-//        return "{hello: World}";
+//    @RequestMapping(value = "/books/", method = RequestMethod.GET)
+//    public List<Book> displayBooks() {
+//        return bookService.getAllBooks();
 //    }
 //
-//    @RequestMapping("/helloBook")
-//    public Book helloBook(){
-//        return new Book(1L,"9788324631766","Thinking in Java",
-//                "Bruce Eckel","Helion","programming");
+//    @RequestMapping(value = "/books/{bookId}", method = RequestMethod.GET)
+//    public Book getBook(@PathVariable int bookId) {
+//        return bookService.getBook(bookId);
+//    }
+//
+//    @RequestMapping(value = "/books/", method = RequestMethod.POST)
+//    public void createBook(@RequestBody Book book) {
+//        book.setId(bookService.getNextId());
+//        bookService.createBook(book);
+//    }
+//
+//    @RequestMapping(value = "/books/{bookId}", method = RequestMethod.PUT)
+//    public void updateBook(@RequestBody Book book, @PathVariable int bookId) {
+//        book.setId(bookId);
+//        bookService.updateBook(book);
+//    }
+//
+//    @RequestMapping(value = "/books/{bookId}", method = RequestMethod.DELETE)
+//    public void deleteBook(@PathVariable int bookId) {
+//        bookService.deleteBook(bookId);
 //    }
 
-    @RequestMapping("/list")
+    @RequestMapping(value = "/books/", method = RequestMethod.GET)
     public List<Book> displayBooks() {
         return bookService.getAllBooks();
     }
+
+    @RequestMapping(value = "/books/{bookId}", method = RequestMethod.GET)
+    public Book getBook(@PathVariable int bookId) {
+        return bookService.getBook(bookId);
+    }
+
+    @RequestMapping(value = "/books/", method = RequestMethod.POST)
+    public void createBook(@RequestBody Book book) {
+        book.setId(bookService.getNextId());
+        bookService.createBook(book);
+    }
+
+    @RequestMapping(value = "/books/{bookId}", method = RequestMethod.PUT)
+    public void updateBook(@RequestBody Book book, @PathVariable int bookId) {
+        book.setId(bookId);
+        bookService.updateBook(book);
+    }
+
+    @RequestMapping(value = "/books/{bookId}", method = RequestMethod.DELETE)
+    public void deleteBook(@PathVariable int bookId) {
+        bookService.deleteBook(bookId);
+    }
+
+
 }
