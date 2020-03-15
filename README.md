@@ -1,7 +1,7 @@
 # CL_Workshop5
 
-Prosta aplikacja do katalogowania książek:<br>
-Rozszerzenie CL_Workshop_4 o RESTowy backend
+A simple book cataloguing web app<br>
+Extension of the CL_Workshop_4 - REST backend implemented
 <br><br>
 
 Spring MVC<br>
